@@ -1,0 +1,14 @@
+service: deployment-poc
+
+frameworkVersion: '2'
+
+
+provider:
+  name: aws
+  runtime: python3.8
+  lambdaHashingVersion: 20201221
+  region: us-east-2
+  profile: deployment_poc
+functions:
+  hello:
+    handler: handler.hello
