@@ -1,4 +1,4 @@
-service: sls_deployment_poc
+service: sls-deployment-poc
 
 frameworkVersion: '3'
 
