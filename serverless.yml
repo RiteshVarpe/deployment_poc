@@ -1,6 +1,6 @@
 service: deployment-poc
 
-frameworkVersion: '2'
+frameworkVersion: '3'
 
 
 provider:
