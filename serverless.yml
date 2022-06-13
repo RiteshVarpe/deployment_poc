@@ -8,6 +8,7 @@ provider:
   runtime: python3.8
   lambdaHashingVersion: 20201221
   region: us-east-2
+  deploymentBucket: deployment-poc-ci-cd
 
 functions:
   hello:
