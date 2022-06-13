@@ -1,4 +1,4 @@
-service: deployment-poc
+service: sls_deployment_poc
 
 frameworkVersion: '3'
 
@@ -8,7 +8,7 @@ provider:
   runtime: python3.8
   lambdaHashingVersion: 20201221
   region: us-east-2
-  profile: deployment_poc
+
 functions:
   hello:
     handler: handler.hello
