@@ -3,7 +3,7 @@ import json
 
 def hello(event, context):
     body = {
-        "message": "Hello World! Today is Monday.",
+        "message": "Hello World! Good evening team!",
         "input": event,
     }
 
