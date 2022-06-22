@@ -1,4 +1,4 @@
-service: web-app-deployment-poc
+service: api
 
 frameworkVersion: '2'
 
