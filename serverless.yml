@@ -11,7 +11,7 @@ provider:
   region: us-east-2
   deploymentBucket: deployment-poc-ci-cd
   environment:
-    stage: ${self:provider.stage}
+    env_stage: ${self:provider.stage}
 
 functions:
   get_all_authors:
