@@ -18,9 +18,12 @@ def get_config(config_key):
     return env_key
 
 
+env = get_config("stage")
+
+if env == "stage":
+    api_url = "https://u7wmksc2aa.execute-api.us-east-2.amazonaws.com/dev/courses"
+
 
 def test_get_courses_check_status_code_equals_200():
-    env = get_config("stage")
-    print(env)
-    response = requests.get("https://u7wmksc2aa.execute-api.us-east-2.amazonaws.com/dev/courses")
+    response = requests.get(api_url)
     assert response.status_code == 200
