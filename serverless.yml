@@ -6,11 +6,12 @@ frameworkVersion: '3'
 provider:
   name: aws
   runtime: python3.7
+  stage: ${opt:stage}
   lambdaHashingVersion: 20201221
   region: us-east-2
   deploymentBucket: deployment-poc-ci-cd
   environment:
-    stage: ${STAGE_NAME}
+    stage: ${self:provider.stage}
 
 functions:
   get_all_authors:
