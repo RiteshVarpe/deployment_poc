@@ -9,7 +9,6 @@ provider:
   lambdaHashingVersion: 20201221
   region: us-east-2
   deploymentBucket: deployment-poc-ci-cd
-  profile: deployment_poc
 
 functions:
   get_all_authors:
