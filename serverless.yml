@@ -9,6 +9,8 @@ provider:
   lambdaHashingVersion: 20201221
   region: us-east-2
   deploymentBucket: deployment-poc-ci-cd
+  environment:
+    stage: ${STAGE_NAME}
 
 functions:
   get_all_authors:
