@@ -18,7 +18,7 @@ def get_config(config_key):
 
 
 @pytest.fixture(scope="session", autouse=True)
-def api_url():
+def get_api_url():
     env = get_config("stage")
     api_url = ""
 
