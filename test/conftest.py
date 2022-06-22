@@ -1,6 +1,5 @@
 import os
-import requests
-
+import pytest
 
 def get_config(config_key):
     """
@@ -18,15 +17,12 @@ def get_config(config_key):
     return env_key
 
 
-
-
-
-def test_get_courses_check_status_code_equals_200():
+@pytest.fixture(scope="session", autouse=True)
+def api_url():
     env = get_config("stage")
     api_url = ""
 
     if env == "stage":
         api_url = "https://u7wmksc2aa.execute-api.us-east-2.amazonaws.com/dev/courses"
 
-    response = requests.get(api_url)
-    assert response.status_code == 200
+    return api_url
