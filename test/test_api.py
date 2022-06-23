@@ -13,7 +13,11 @@ import pytest
 #         api_url = "https://u7wmksc2aa.execute-api.us-east-2.amazonaws.com/dev/courses"
 #         return api_url
 
+@pytest.fixture
+def api_url():
+    return os.environ.get('api_url')
 
-def test_get_courses_check_status_code_equals_200():
-    response = requests.get("https://u7wmksc2aa.execute-api.us-east-2.amazonaws.com/dev/courses")
+
+def test_get_courses_check_status_code_equals_200(api_url):
+    response = requests.get(api_url)
     assert response.status_code == 200
