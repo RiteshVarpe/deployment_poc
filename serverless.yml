@@ -32,7 +32,7 @@ resources:
       Type: AWS::IAM::Role
       Properties:
         Path: /
-        RoleName: RV_deployment_poc_getallauthors
+        RoleName: RV_deployment_poc_${self:provider.stage}_getallauthors
         AssumeRolePolicyDocument:
           Version: '2012-10-17'
           Statement:
@@ -42,7 +42,7 @@ resources:
                   - lambda.amazonaws.com
               Action: sts:AssumeRole
         Policies:
-          - PolicyName: RV_deploymentpoc_getallauthors-cloudwatch-logs-policy
+          - PolicyName: RV_deploymentpoc_${self:provider.stage}_getallauthors-cloudwatch-logs-policy
             PolicyDocument:
               Version: "2012-10-17"
               Statement:
@@ -53,7 +53,7 @@ resources:
                     - logs:PutLogEvents
                   Resource: "*"
 
-          - PolicyName: RV_deploymentpoc_getallauthors-dynamodb-policy
+          - PolicyName: RV_deploymentpoc_${self:provider.stage}_getallauthors-dynamodb-policy
             PolicyDocument:
               Version: '2012-10-17'
               Statement:
@@ -67,7 +67,7 @@ resources:
       Type: AWS::IAM::Role
       Properties:
         Path: /
-        RoleName: RV_deployment_poc_getallcourses
+        RoleName: RV_deployment_poc_${self:provider.stage}_getallcourses
         AssumeRolePolicyDocument:
           Version: '2012-10-17'
           Statement:
@@ -77,7 +77,7 @@ resources:
                   - lambda.amazonaws.com
               Action: sts:AssumeRole
         Policies:
-          - PolicyName: RV_deploymentpoc_getallcourses-cloudwatch-logs-policy
+          - PolicyName: RV_deploymentpoc_${self:provider.stage}_getallcourses-cloudwatch-logs-policy
             PolicyDocument:
               Version: "2012-10-17"
               Statement:
@@ -88,7 +88,7 @@ resources:
                     - logs:PutLogEvents
                   Resource: "*"
 
-          - PolicyName: RV_deploymentpoc_getallcourses-dynamodb-policy
+          - PolicyName: RV_deploymentpoc_${self:provider.stage}_getallcourses-dynamodb-policy
             PolicyDocument:
               Version: '2012-10-17'
               Statement:
@@ -102,7 +102,7 @@ resources:
       Type: AWS::IAM::Role
       Properties:
         Path: /
-        RoleName: RV_deployment_poc_addcourse
+        RoleName: RV_deployment_poc_${self:provider.stage}_addcourse
         AssumeRolePolicyDocument:
           Version: '2012-10-17'
           Statement:
@@ -112,7 +112,7 @@ resources:
                   - lambda.amazonaws.com
               Action: sts:AssumeRole
         Policies:
-          - PolicyName: RV_deploymentpoc_addcourse-cloudwatch-logs-policy
+          - PolicyName: RV_deploymentpoc_${self:provider.stage}_addcourse-cloudwatch-logs-policy
             PolicyDocument:
               Version: "2012-10-17"
               Statement:
@@ -123,7 +123,7 @@ resources:
                     - logs:PutLogEvents
                   Resource: "*"
 
-          - PolicyName: RV_deploymentpoc_addcourse-dynamodb-policy
+          - PolicyName: RV_deploymentpoc_${self:provider.stage}_addcourse-dynamodb-policy
             PolicyDocument:
               Version: '2012-10-17'
               Statement:
