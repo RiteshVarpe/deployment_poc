@@ -12,12 +12,9 @@ provider:
   deploymentBucket: deployment-poc-ci-cd
   environment:
     env_stage: ${self:provider.stage}
+    ddb_table_name: ${self:provider.stage}_course
 
 functions:
-  get_all_authors:
-    handler: handler.getallauthors
-    role: RoleForGetAllAuthors
-
   get_all_courses:
     handler: handler.getallcourses
     role: RoleForGetAllCourses
@@ -28,41 +25,6 @@ functions:
 
 resources:
   Resources:
-    RoleForGetAllAuthors:
-      Type: AWS::IAM::Role
-      Properties:
-        Path: /
-        RoleName: RV_deployment_poc_${self:provider.stage}_getallauthors
-        AssumeRolePolicyDocument:
-          Version: '2012-10-17'
-          Statement:
-            - Effect: Allow
-              Principal:
-                Service:
-                  - lambda.amazonaws.com
-              Action: sts:AssumeRole
-        Policies:
-          - PolicyName: RV_deploymentpoc_${self:provider.stage}_getallauthors-cloudwatch-logs-policy
-            PolicyDocument:
-              Version: "2012-10-17"
-              Statement:
-                - Effect: Allow
-                  Action:
-                    - logs:CreateLogStream
-                    - logs:CreateLogGroup
-                    - logs:PutLogEvents
-                  Resource: "*"
-
-          - PolicyName: RV_deploymentpoc_${self:provider.stage}_getallauthors-dynamodb-policy
-            PolicyDocument:
-              Version: '2012-10-17'
-              Statement:
-                - Effect: Allow
-                  Action:
-                    - "dynamodb:Scan"
-                  Resource:
-                      - "arn:aws:dynamodb:us-east-2:390618173518:table/RV_Deployment_POC_Authors"
-
     RoleForGetAllCourses:
       Type: AWS::IAM::Role
       Properties:
@@ -77,7 +39,7 @@ resources:
                   - lambda.amazonaws.com
               Action: sts:AssumeRole
         Policies:
-          - PolicyName: RV_deploymentpoc_${self:provider.stage}_getallcourses-cloudwatch-logs-policy
+          - PolicyName: RV_deployment_poc_${self:provider.stage}_getallcourses-cloudwatch-logs-policy
             PolicyDocument:
               Version: "2012-10-17"
               Statement:
@@ -88,7 +50,7 @@ resources:
                     - logs:PutLogEvents
                   Resource: "*"
 
-          - PolicyName: RV_deploymentpoc_${self:provider.stage}_getallcourses-dynamodb-policy
+          - PolicyName: RV_deployment_poc_${self:provider.stage}_getallcourses-dynamodb-policy
             PolicyDocument:
               Version: '2012-10-17'
               Statement:
@@ -96,7 +58,7 @@ resources:
                   Action:
                     - "dynamodb:Scan"
                   Resource:
-                    - "arn:aws:dynamodb:us-east-2:390618173518:table/RV_Deployment_POC_Courses"
+                    - "arn:aws:dynamodb:us-east-2:390618173518:table/${self:provider.stage}_course"
 
     RoleForAddCourse:
       Type: AWS::IAM::Role
@@ -112,7 +74,7 @@ resources:
                   - lambda.amazonaws.com
               Action: sts:AssumeRole
         Policies:
-          - PolicyName: RV_deploymentpoc_${self:provider.stage}_addcourse-cloudwatch-logs-policy
+          - PolicyName: RV_deployment_poc_${self:provider.stage}_addcourse-cloudwatch-logs-policy
             PolicyDocument:
               Version: "2012-10-17"
               Statement:
@@ -123,7 +85,7 @@ resources:
                     - logs:PutLogEvents
                   Resource: "*"
 
-          - PolicyName: RV_deploymentpoc_${self:provider.stage}_addcourse-dynamodb-policy
+          - PolicyName: RV_deployment_poc_${self:provider.stage}_addcourse-dynamodb-policy
             PolicyDocument:
               Version: '2012-10-17'
               Statement:
@@ -132,4 +94,4 @@ resources:
                     - "dynamodb:Scan"
                     - "dynamodb:PutItem"
                   Resource:
-                    - "arn:aws:dynamodb:us-east-2:390618173518:table/RV_Deployment_POC_Courses"
+                    - "arn:aws:dynamodb:us-east-2:390618173518:table/${self:provider.stage}_course"
