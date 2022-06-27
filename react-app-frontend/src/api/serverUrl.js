@@ -1,0 +1,1 @@
+export default "https://u7wmksc2aa.execute-api.us-east-2.amazonaws.com/dev";
